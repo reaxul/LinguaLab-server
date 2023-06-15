@@ -27,7 +27,7 @@ async function run() {
         await client.connect();
 
         const classCollection = client.db('LinguoLab').collection('classes');
-        const instructorCollection = client.db('bistroDB').collection('instructor');
+        const instructorCollection = client.db('LinguoLab').collection('instructor');
         const cartCollection = client.db('bistroDB').collection('carts');
 
         app.get('/classes', async (req, res) => {
