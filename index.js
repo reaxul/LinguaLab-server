@@ -58,9 +58,9 @@ run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
-    res.send('bistro boss server is running......');
+    res.send('LinguoLab boss server is running......');
 })
 
 app.listen(port, () => {
-    console.log(`bistro server listening on port ${port}`);
+    console.log(`LinguoLab server listening on port ${port}`);
 })
