@@ -26,12 +26,12 @@ async function run() {
         // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
 
-        const menuCollection = client.db('bistroDB').collection('menu');
+        const classCollection = client.db('LinguoLab').collection('classes');
         const reviewCollection = client.db('bistroDB').collection('reviews');
         const cartCollection = client.db('bistroDB').collection('carts');
 
-        app.get('/menu', async (req, res) => {
-            const result = await menuCollection.find().toArray();
+        app.get('/classes', async (req, res) => {
+            const result = await classCollection.find().toArray();
             res.send(result);
         })
 
