@@ -5,7 +5,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-// middleware
+// middleware 
 app.use(cors());
 app.use(express.json());
 
@@ -40,7 +40,7 @@ async function run() {
             res.send(result);
         })
 
-        app.post('/carts', async (req, res) => { 
+        app.post('/carts', async (req, res) => {
             const item = req.body;
             const result = await cartCollection.insertOne(item);
             res.send(result);
