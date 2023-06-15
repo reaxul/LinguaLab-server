@@ -36,7 +36,7 @@ async function run() {
         })
 
         app.get('/instructor', async (req, res) => {
-            const result = await reviewCollection.find().toArray();
+            const result = await instructorCollection.find().toArray();
             res.send(result);
         })
 
