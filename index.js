@@ -42,7 +42,7 @@ async function run() {
 
         app.get('/all-classes', async (req, res) => {
             const result = await allClassesCollection.find().toArray();
-            res.send(result);
+            res.send(result); 
         })
 
         // app.post('/carts', async (req, res) => {
