@@ -28,7 +28,7 @@ async function run() {
 
         const classCollection = client.db('LinguoLab').collection('classes');
         const instructorCollection = client.db('LinguoLab').collection('instructor');
-        const cartCollection = client.db('bistroDB').collection('carts');
+        const allClassesCollection = client.db('LinguoLab').collection('allClasses');
 
         app.get('/classes', async (req, res) => {
             const result = await classCollection.find().toArray();
@@ -40,11 +40,11 @@ async function run() {
             res.send(result);
         })
 
-        app.post('/carts', async (req, res) => {
-            const item = req.body;
-            const result = await cartCollection.insertOne(item);
-            res.send(result);
-        })
+        // app.post('/carts', async (req, res) => {
+        //     const item = req.body;
+        //     const result = await cartCollection.insertOne(item);
+        //     res.send(result);
+        // })
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
