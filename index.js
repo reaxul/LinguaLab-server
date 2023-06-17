@@ -26,6 +26,7 @@ async function run() {
         // Connect the client to the server	(optional starting in v4.7)
         // await client.connect();
 
+        const usersCollection = client.db('LinguoLab').collection('users');
         const classCollection = client.db('LinguoLab').collection('classes');
         const instructorCollection = client.db('LinguoLab').collection('instructor');
         const allClassesCollection = client.db('LinguoLab').collection('allClasses');
@@ -46,7 +47,7 @@ async function run() {
             res.send(result);
         })
 
-        app.get('/my-classes', async (req, res) => { 
+        app.get('/my-classes', async (req, res) => {
             const email = req.query.email;
             if (!email) {
                 res.send([]);
@@ -62,12 +63,18 @@ async function run() {
             res.send(result);
         })
 
+        app.post('/users', async (req, res) => {
+            const user = req.body;
+            const result = await usersCollection.insertOne(user);
+            res.send(result);
+        })
+
         app.delete('/my-classes/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
             const result = await myClassesCollection.deleteOne(query);
             res.send(result);
-         });
+        });
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
